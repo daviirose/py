@@ -7,6 +7,9 @@ app = Flask(__name__) # Placeholder for app.py
 def index(): # Defines the function index
     return render_template('home.html') # Anything you put home.html will appear
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__': # The script will be executed
     app.run(debug=True) # Runs the app / Debug mode means wont have to rerun to server to see changes
