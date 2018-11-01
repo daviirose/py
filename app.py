@@ -1,7 +1,7 @@
 from flask import Flask, render_template # Imports Flask and renders the template
 
-
 app = Flask(__name__) # Placeholder for app.py
+
 
 @app.route('/') # Route for our index page/Front page
 def index(): # Defines the function index
@@ -12,4 +12,5 @@ def about():
     return render_template('about.html')
 
 if __name__ == '__main__': # The script will be executed
-    app.run(debug=True) # Runs the app / Debug mode means wont have to rerun to server to see changes
+   app.run(debug=True) # Runs the app / Debug mode means wont have to rerun to server to see changes 
+

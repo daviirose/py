@@ -1,0 +1,19 @@
+.navbar {
+    width: 100%;
+    height: 200px;
+    background-color: grey;
+    padding: 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.container-one {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.container-two {
+    display: flex;
+    justify-content: flex-end;
+    padding-left: 100px;
+}
