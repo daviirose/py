@@ -11,6 +11,10 @@ def index(): # Defines the function index
 def about():
     return render_template('about.html')
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
 if __name__ == '__main__': # The script will be executed
    app.run(debug=True) # Runs the app / Debug mode means wont have to rerun to server to see changes 
 

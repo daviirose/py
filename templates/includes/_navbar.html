@@ -1,20 +1,22 @@
 <nav class="nav">
     <div class="container-one">
-        <a class="active" href="#home">MyPlanner</a>
+        <a class="myplanner" href="#home">MyPlanner</a>
         <div class="flex">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
+        <a class="home" href="/">Home</a>
+        <a class="about" href="/about">About Us</a>
         </div>
       </div>
         <div class="container-two">
-          <div class="flex">
+          <div class="flex-two">
           {% if session.logged_in %}
             <a href="/dashboard">Dashboard</a>
             <a href="/logout">Logout</a>
           {% else %}
-            <a href="/register">Register</a>
-            <a href="/login">Login</a>
+            <a class="register" href="/register">Register</a>
+            <a class="login" href="/login">Login</a>
           {% endif %}
         </div>
       </div>
   </nav>
+
+  
