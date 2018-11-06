@@ -117,6 +117,7 @@ p {
 
 .form {
     padding: 30px;
+    width: 10px;
 }
 .form-control {
 padding-right:800px;

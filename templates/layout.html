@@ -12,10 +12,12 @@
     <div class="container">
         {% block body %}{% endblock %}
     </div>
-    <div class="forms-group">
-        {% include 'includes/_messages.html' %}
-    </div>
 
+    <div class="form-groups">
+        {% block title %}{% endblock %}
+        {% block content %}{% endblock %}
+    </div>
+    
        
 
 </body>

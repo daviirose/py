@@ -9,7 +9,7 @@ app = Flask(__name__) # Placeholder for app.py
 # Config MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '123456'
+app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'myflaskapp'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # init MYSQL
@@ -57,7 +57,7 @@ def register():
 
             flash('You are now registered and can log in', 'Success!')
 
-            return redirect(url_for('login'))
+            return redirect(url_for('/'))
         return render_template('register.html', form=form)
 
 

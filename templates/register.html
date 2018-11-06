@@ -1,9 +1,11 @@
 {% extends 'layout.html' %}
 
-{% block body %}
-  <h1>Register</h1>
+{% block header %}
+<h1>{% block title %}Register{% endblock %}</h1>
+{% endblock %}
   {% from "includes/_formhelpers.html" import render_field %}
-  <form method="POST" action="">
+  {% block content %}
+  <form class="form-groups" method="POST" action="">
     <div class="form">
       {{render_field(form.name, class_="form-control")}}
     </div>
