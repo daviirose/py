@@ -112,3 +112,18 @@ p {
     font-size: 18px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Register */
+
+.form {
+    padding: 30px;
+}
+.form-control {
+padding-right:800px;
+padding-bottom: 10px;
+
+}
+.forms-group {
+    margin: auto;
+    padding: 30px;
+}
