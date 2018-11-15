@@ -26,7 +26,7 @@ def about():
     return render_template('about.html')
 
 # Register form class
-class RegisterForm(Form):
+class RegisterForm(Form): # Defining my forms with a subclass of (Form)
     name = StringField('Name', [validators.Length(min=1, max=50)])
     username = StringField('Username', [validators.length(min=1, max=25)])
     email = StringField('Email', [validators.length(min=6, max=50)])
@@ -87,7 +87,7 @@ def login():
             if sha256_crypt.verify(password_candidate, password):
                 # Passed
                 session['logged_in'] = True
-                session['username'] = username # var comes from the form
+                session['username'] = username # var (username) comes from the form
 
                 flash('You are now logged in', 'success') # If correct password say this
                 return redirect(url_for('dashboard'))
@@ -107,8 +107,8 @@ def is_logged_in(f): # takes in a parameter f
     @wraps(f) # pass in the f value
     def wrap(*args, **kwargs): # no idea what the value in this means
         if 'logged_in' in session: 
-            return f(*args, **kwargs) # if you try accessing routes that only users are allow to, return this 
-        else:
+            return f(*args, **kwargs) # *args and **kwargs allow you to pass a variable number of arguments to a function
+        else: 
             flash('Unauthorized, Please login', 'danger') # if not logged in you will get an error
             return redirect(url_for('login'))
     return wrap
