@@ -37,7 +37,7 @@ class RegisterForm(Form): # Defining my forms with a subclass of (Form)
     confirm = PasswordField('Confirm Password')
 
 # User register
-@app.route('/register', methods=['GET', 'POST']) # GET retrieves the info while POST creates it
+@app.route('/register', methods=['GET', 'POST']) # POST retrieves the info while GET creates it
 def register():
         form = RegisterForm(request.form)
         if request.method == 'POST' and form.validate(): # if the form is submitted do the following...
@@ -105,7 +105,7 @@ def login():
 # Check if user logged in
 def is_logged_in(f): # takes in a parameter f
     @wraps(f) # pass in the f value
-    def wrap(*args, **kwargs): # no idea what the value in this means
+    def wrap(*args, **kwargs): 
         if 'logged_in' in session: 
             return f(*args, **kwargs) # *args and **kwargs allow you to pass a variable number of arguments to a function
         else: 
