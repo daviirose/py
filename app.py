@@ -5,7 +5,6 @@ from passlib.hash import sha256_crypt # Encrypts my password
 from functools import wraps
 
 app = Flask(__name__) # Placeholder for app.py
-
 # Config MySQL
 app.config['MYSQL_HOST'] = 'localhost' # name of host to connect to
 app.config['MYSQL_USER'] = 'root' # user to authenticate as Default
