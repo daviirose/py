@@ -1,10 +1,16 @@
-from flask import Flask, render_template, flash, redirect, url_for, session, request, logging # Imports Flask and renders the template
+from flask import Flask, render_template, flash, redirect, url_for, session, request, jsonify, logging # Imports Flask and renders the template
+from pusher import Pusher
+import json
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
 from passlib.hash import sha256_crypt # Encrypts my password
 from functools import wraps
 
+
+
+# creates flask app
 app = Flask(__name__) # Placeholder for app.py
+
 # Config MySQL
 app.config['MYSQL_HOST'] = 'localhost' # name of host to connect to
 app.config['MYSQL_USER'] = 'root' # user to authenticate as Default
@@ -88,7 +94,7 @@ def login():
                 session['logged_in'] = True
                 session['username'] = username # var (username) comes from the form
 
-                flash('You are now logged in', 'success') # If correct password say this
+                flash('You are now logged in', 'success') # If correct password say this and redirect you to DB
                 return redirect(url_for('dashboard'))
             else:
                 error = 'Invalid login' # If incorrect password say this
@@ -124,7 +130,47 @@ def logout():
 def dashboard():
     return render_template('dashboard.html')
 
+    # configure pusher object
+pusher = Pusher(
+    app_id='661600',
+    key='1bce7c3f2ef0f1951e3d',
+    secret='660465b57dd5b226d9bb',
+    cluster='us2',
+    ssl=True
+)
+
+ # main route, shows main.html view
+@app.route('/main')
+def todo():
+    return render_template('main.html')
+
+# endpoint for storing todo item
+@app.route('/add-todo', methods = ['POST'])
+def addTodo():
+    data = json.loads(request.data) # load JSON data from request
+    pusher.trigger('todo', 'item-added', data) # trigger `item-added` event on `todo` channel
+    return jsonify(data)
+
+# endpoint for deleting todo item
+@app.route('/remove-todo/<item_id>')
+def removeTodo(item_id):
+    data = {'id': item_id }
+    pusher.trigger('todo', 'item-removed', data)
+    return jsonify(data)  
+
+# endpoint for updating todo item
+@app.route('/update-todo/<item_id>', methods = ['POST'])
+def updateTodo(item_id):
+    data = {
+    'id': item_id,
+    'completed': json.loads(request.data).get('completed', 0)
+    }
+    pusher.trigger('todo', 'item-updated', data)
+    return jsonify(data)  
+
+
 if __name__ == '__main__': # The script will be executed
     app.secret_key='dsperezsilva171'
-    app.run(debug=True, host='0.0.0.0') # Runs the app / Debug mode means wont have to rerun to server to see changes 
+    app.run(debug=True, host='192.168.33.10') # Runs the app / Debug mode means wont have to rerun to server to see changes 
+
 
