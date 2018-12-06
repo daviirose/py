@@ -11,6 +11,8 @@ from functools import wraps
 # creates flask app
 app = Flask(__name__) # Placeholder for app.py
 
+app.static_folder = 'static'
+
 # Config MySQL
 app.config['MYSQL_HOST'] = 'localhost' # name of host to connect to
 app.config['MYSQL_USER'] = 'root' # user to authenticate as Default
