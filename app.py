@@ -149,7 +149,7 @@ def todo():
 # endpoint for storing todo item
 @app.route('/add-todo', methods = ['POST'])
 def addTodo():
-    data = json.loads(request.data) # load JSON data from request
+    data = json.loads(request.data.decode("utf-8")) # load JSON data from request
     pusher.trigger('todo', 'item-added', data) # trigger `item-added` event on `todo` channel
     return jsonify(data)
 
@@ -165,7 +165,7 @@ def removeTodo(item_id):
 def updateTodo(item_id):
     data = {
     'id': item_id,
-    'completed': json.loads(request.data).get('completed', 0)
+    'completed': json.loads(request.data.decode("utf-8")).get('completed', 0)
     }
     pusher.trigger('todo', 'item-updated', data)
     return jsonify(data)  
