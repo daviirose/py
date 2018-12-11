@@ -83,6 +83,7 @@ body {
 	-webkit-text-rendering: optimizeLegibility;
 	-moz-text-rendering: optimizeLegibility;
 	text-rendering: optimizeLegibility;
+	margin-top: 20px;
 }
 
 .new-todo,
