@@ -1,8 +1,8 @@
 from flask import Flask, render_template, flash, redirect, url_for, session, request, jsonify, logging # Imports Flask and renders the template
 from pusher import Pusher
 import json
-from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+from flask_mysqldb import MySQL
 from passlib.hash import sha256_crypt # Encrypts my password
 from functools import wraps
 
@@ -119,6 +119,7 @@ def is_logged_in(f): # takes in a parameter f
             flash('Unauthorized, Please login', 'danger') # if not logged in you will get an error
             return redirect(url_for('login'))
     return wrap
+
 
 # Logout 
 @app.route('/logout')
