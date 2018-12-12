@@ -1,7 +1,8 @@
 #home {
     background-image:url('/static/img/mountains.jpeg');
     height: auto;
-    width: 100%;
+	width: 100%;
+	background-size: cover;
 }
 html,
 body {
@@ -382,4 +383,70 @@ html .clear-completed:active {
 	.filters {
 		bottom: 10px;
 	}
+}
+
+
+
+
+
+  main {
+    align-items: center;
+    text-align: center;
+
+  }
+    .lg-heading {
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .portrait-1 {
+      width: 150px;
+	  height: 150px;
+	  border-radius: 50%; 
+  	  border: solid 3px grey;
+  	  background-size: contain;
+    }
+
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .flex-portrait {
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    padding-bottom: 20px;
+  }
+  #about {
+    display: flex;
+    flex-direction: column;
+  }
+    .flex-bio {
+	width: 95%;
+	display: flex;
+    flex-direction: column
+    }
+    .container-1,
+    .container-2,
+    .container-3 {
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+	font-size: 12px;
+	padding: 15px;
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 0.6);
+	background: darken(blue, 5);
+	border-bottom: black 2px solid;
+	margin: 50px 10px 10px;
+	}
+#main-footer {
+	text-align: center;
+	padding: 1rem;
+	margin-top: 25px;
+	background: darken(blue, 5);
+	color: set-text-color(black);
+	height: 60px;
 }
